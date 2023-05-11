@@ -36,6 +36,9 @@ def validate_correct_page(page: Page) -> None:
         raise InfoNotFoundForCNPJ(
             detail="NÃO FORAM ENCONTRADAS INFORMAÇÕES PARA O CNPJ INFORMADO",
             status_code=status.HTTP_204_NO_CONTENT,
+            headers={
+                "X-Error-Message": "NÃO FORAM ENCONTRADAS INFORMAÇÕES PARA O CNPJ INFORMADO",  # noqa
+            },
         )
 
 

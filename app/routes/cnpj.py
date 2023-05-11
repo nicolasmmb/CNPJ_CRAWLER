@@ -21,4 +21,5 @@ def info(cnpj: CNPJ) -> ResponseCNPJ:
         ProblemOnDecode(
             detail=f"Problem on decode: {e}",
             status_code=500,
+            headers={"X-Error-Message": "Problem on decode"},
         )
