@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import RedirectResponse
 
+import app.routes as routes
 
 app: FastAPI = FastAPI(
     title="CNPJ API",
@@ -27,3 +28,5 @@ async def root() -> RedirectResponse:
     return RedirectResponse(url="/docs")
 
 
+### Importing routes
+app.include_router(routes.cnpj.app, prefix="/api")
