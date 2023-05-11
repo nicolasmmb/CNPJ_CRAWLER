@@ -1,5 +1,6 @@
 import re
 
+from fastapi import status
 from playwright.sync_api import Browser, Page, sync_playwright
 
 from app.crawler.conts import (
@@ -33,7 +34,7 @@ def validate_correct_page(page: Page) -> None:
     if page.query_selector("div.alert-danger"):
         raise InfoNotFoundForCNPJ(
             detail="NÃO FORAM ENCONTRADAS INFORMAÇÕES PARA O CNPJ INFORMADO",
-            status_code=200,
+            status_code=status.HTTP_204_NO_CONTENT,
         )
 
 
@@ -43,7 +44,7 @@ def crawler_search_cnpj(cnpj):
     with sync_playwright() as p:
         browser: Browser = p.firefox.launch_persistent_context(
             DIR_BROWSER_DATA,
-            headless=True,
+            headless=False,
             viewport={"width": 1920 / 2.5, "height": 1080},
             devtools=True,
             timeout=59000,
@@ -74,8 +75,4 @@ def crawler_search_cnpj(cnpj):
                     continue
 
         fiels_data[ECONOMIC_ACTIVITIES] = economic_activities
-        fiels_data = {normalize_key(key): value for key, value in fiels_data.items()}
-
-        browser.close()
-
-        return fiels_data
+        return {normalize_key(key): value for key, value in fiels_data.items()}
