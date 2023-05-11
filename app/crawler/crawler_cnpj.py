@@ -51,3 +51,31 @@ def crawler_search_cnpj(cnpj):
 
         page: Page = browser.new_page()
 
+        run_actions(page, url_query_cnpj)
+
+        validate_correct_page(page)
+
+        texts: list[str] = []
+        for item in page.query_selector_all(TEXTS_XPATH):
+            text: str = item.text_content()
+            text = sanitize_text(text)
+            texts.append(text)
+
+        fiels_data: dict = {}
+        economic_activities: list[str] = []
+
+        for index, text in enumerate(texts):
+            if econimic_activity := re.findall(ECONOMIC_PATTERN, text):
+                economic_activities.extend(econimic_activity)
+                continue
+            for key in FIELDS:
+                if key == text:
+                    fiels_data[key] = texts[index + 1]
+                    continue
+
+        fiels_data[ECONOMIC_ACTIVITIES] = economic_activities
+        fiels_data = {normalize_key(key): value for key, value in fiels_data.items()}
+
+        browser.close()
+
+        return fiels_data
