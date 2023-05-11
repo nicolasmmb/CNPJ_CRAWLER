@@ -1,4 +1,5 @@
 import re
+from typing import Any
 
 from fastapi import status
 from playwright.sync_api import Browser, Page, sync_playwright
@@ -38,7 +39,7 @@ def validate_correct_page(page: Page) -> None:
         )
 
 
-def crawler_search_cnpj(cnpj):
+def crawler_search_cnpj(cnpj) -> dict[str, Any]:
     url_query_cnpj: str = f"{BASE_URL }?cnpj={cnpj}"
 
     with sync_playwright() as p:
