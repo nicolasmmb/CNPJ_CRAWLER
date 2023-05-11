@@ -1,8 +1,3 @@
-<!-- # title:
-## subtitle:
-### topic:
-#### subtopic: -->
-
 # :scroll: Documentação :scroll:
 # Instruções
 Sigam as instruções abaixo para realizar rodar o projeto corretamente.
@@ -18,7 +13,16 @@ Sigam as instruções abaixo para realizar rodar o projeto corretamente.
 
 3. Instale as dependências do projeto com o comando:
    ```bash
-    poetry install
+   # Cria o ambiente virtual no projeto
+   poetry config virtualenvs.in-project true   
+   ```
+   ```bash
+   # Instala as dependências de Produção
+    poetry install --only=prod
+    ```
+   ```bash
+   # Opcional - Instala as dependências de Desenvolvimento
+    poetry install --with=prod,dev 
     ```
 
 4. Ative o ambiente virtual com o comando:
@@ -26,8 +30,13 @@ Sigam as instruções abaixo para realizar rodar o projeto corretamente.
     poetry shell
     ```
 
-5. Rode instale os navegadores com o comando:
+5. Rode instale o navegadores com o comando:
    ```bash
-   playwright install
+   playwright install firefox
+   ```
+
+6. Rode o projeto com o comando:
+   ```bash
+   python main.py
    ```
 
