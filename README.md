@@ -24,7 +24,7 @@ Sigam as instruções abaixo para rodar o projeto corretamente.
 
 ---
 ## Instalação Manual
-1. instale o Poetry com o comando:
+1. Instale o Poetry com o comando:
    ```bash
     pip install poetry
    ```
