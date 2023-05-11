@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  crawler:
+    build:
+      context: ../
+      dockerfile: scripts/Dockerfile
+    ports:
+      - "8085:8085"
+    tty: true
+    stdin_open: true
+    entrypoint: /bin/bash -c "poetry run uvicorn main:app --host 0.0.0.0 --port 8085 --timeout-keep-alive 60 --reload"

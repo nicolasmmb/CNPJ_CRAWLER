@@ -1,0 +1,2 @@
+web: uvicorn main:app --host $HOST --port $PORT --timeout-keep-alive 30
+

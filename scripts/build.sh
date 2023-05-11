@@ -1,0 +1,1 @@
+docker build -t cnpj:latest -f scripts/Dockerfile .
