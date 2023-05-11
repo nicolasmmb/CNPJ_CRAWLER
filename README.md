@@ -1,6 +1,6 @@
 # :scroll: Documentação :scroll:
 # Instruções
-Sigam as instruções abaixo para realizar rodar o projeto corretamente.
+Sigam as instruções abaixo para rodar o projeto corretamente.
 
 ## Instalação
 1. Instale o Python 3.11.2
