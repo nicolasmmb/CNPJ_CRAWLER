@@ -5,7 +5,7 @@ Sigam as instruções abaixo para rodar o projeto corretamente.
 ## Instalação
 1. Instale o Python 3.11
    > Recomendo o uso do [PYENV](https://dev.to/womakerscode/instalando-o-python-com-o-pyenv-2dc7)
-   > Caso não tenha a versão 3.11.2 instalada, ao instalar as dependências do projeto, o Poetry irá bloquear a instalação das dependências.
+   > Caso não tenha a versão 3.11 instalada, ao instalar as dependências do projeto, o Poetry irá bloquear a instalação das dependências.
    > Para resolver, basta instalar a versão 3.11
 
 2. instale o Poetry com o comando:
